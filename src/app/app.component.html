@@ -4,36 +4,88 @@
 
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
 
-    <p>
-      <label for="title">Title Name:</label>
-      <input type="text" id="title" name="title" formControlName="title" class="form-control">
-    </p>
+    <div class="accordion" id="accordionExample">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h2 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Title
+            </button>
+          </h2>
+        </div>
 
-    <table class="table table-bordered" formArrayName="names">
-      <tr>
-        <th colspan="2">Add Multiple Names:</th>
-        <th width="150px"><button type="button" (click)="addName()" class="btn btn-primary">Add More</button></th>
-      </tr>
-      <tr *ngFor="let name of names().controls; let i=index" [formGroupName]="i">
-        <td>
-          Firstname :
-          <input type="text" formControlName="firstname" class="form-control">
-        </td>
-        <td>
-          Lastname:
-          <input type="text" formControlName="lastname" class="form-control">
-        </td>
-        <td>
-          <button (click)="removeName(i)" class="btn btn-danger">Remove</button>
-        </td>
-      </tr>
-    </table>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>
+              <label for="title">Title Name:</label>
+              <input type="text" id="title" name="title" formControlName="title" class="form-control">
+            </p>        </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Author Name
+            </button>
+          </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+          <div class="card-body">
+            <table class="table table-bordered" formArrayName="names">
+              <tr>
+                <th colspan="2">Add Multiple Names:</th>
+                <th width="150px"><button type="button" (click)="addName()" class="btn btn-primary">Add More</button></th>
+              </tr>
+              <tr *ngFor="let name of names().controls; let i=index" [formGroupName]="i">
+                <td>
+                  Firstname :
+                  <input type="text" formControlName="firstname" class="form-control">
+                </td>
+                <td>
+                  Lastname:
+                  <input type="text" formControlName="lastname" class="form-control">
+                </td>
+                <td>
+                  <button (click)="removeName(i)" class="btn btn-danger">Remove</button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Department and University
+            </button>
+          </h2>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>
+              <label for="department">Department</label>
+              <input type="text" id="department" name="department" formControlName="department" class="form-control">
+            </p>
 
+            <p>
+              <label for="college">College</label>
+              <input type="text" id="college" name="college" formControlName="college" class="form-control">
+            </p>
+            <p>
+              <label for="location">Location</label>
+              <input type="text" id="location" name="location" formControlName="college" class="form-control">
+            </p>        </div>
+        </div>
+      </div>
+    </div>
+    <br/>
     <button (click)="submit()" type="submit" class="btn btn-success">Submit</button>
-    <button (click)="download()" type="submit" class="btn btn-success">Get</button>
+<!--    <button (click)="download()" type="submit" class="btn btn-success">Get</button>-->
 
   </form>
 
-  <br/>
+
 <!--  {{this.formGroup.value | json}}-->
 </div>

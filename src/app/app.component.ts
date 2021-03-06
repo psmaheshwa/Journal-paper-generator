@@ -17,6 +17,9 @@ export class AppComponent implements OnInit{
     this.formGroup = this.fb.group({
       title: '',
       names: this.fb.array([]) ,
+      department:'',
+      college:'',
+      location:''
     });
   }
 
@@ -52,9 +55,6 @@ export class AppComponent implements OnInit{
 
 
   submit(){
-    var formData = new FormData();
-    formData.append('names',this.formGroup.get('names').value);
-    formData.append('title',this.formGroup.get('title').value);
     console.log(this.formGroup.value)
     this.apiService.postApiData(this.formGroup.value).subscribe(
       (res) => {

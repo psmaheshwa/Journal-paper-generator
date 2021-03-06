@@ -3,7 +3,7 @@ const { join, resolve } = require('path');
 const latex = require('node-latex');
 
 
-function makePDF(titleName){
+function makePDF(titleName,names){
   let input = `
   \\documentclass[]{IEEEphot}
 
@@ -18,7 +18,7 @@ function makePDF(titleName){
 \\begin{document}
 \\title{${titleName}}
 
-\\author{P.~W.~Wachulak, M.~C.~Marconi,~\\IEEEmembership{Senior~Member,~IEEE},
+\\author{${names[0].firstname}, M.~C.~Marconi,~\\IEEEmembership{Senior~Member,~IEEE},
 R.~A.~Bartels,\\\\
 C.~S. Menoni,~\\IEEEmembership{Fellow,~IEEE}, J.~J.~Rocca}
 
@@ -56,7 +56,7 @@ exports.downloadPDF = (req,res)=>{
 }
 
 exports.generatePDF = (req, res)=>{
-  makePDF(req.body.title);
+  makePDF(req.body.title, req.body.names);
   console.log(req.body);
   res.status(200).json({
     status:'success'
