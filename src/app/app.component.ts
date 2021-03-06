@@ -19,7 +19,9 @@ export class AppComponent implements OnInit{
       names: this.fb.array([]) ,
       department:'',
       college:'',
-      location:''
+      location:'',
+      abstract:'',
+      indexTerms:''
     });
   }
 

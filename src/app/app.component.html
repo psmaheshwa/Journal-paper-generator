@@ -75,10 +75,35 @@
             </p>
             <p>
               <label for="location">Location</label>
-              <input type="text" id="location" name="location" formControlName="college" class="form-control">
+              <input type="text" id="location" name="location" formControlName="location" class="form-control">
             </p>        </div>
         </div>
       </div>
+
+
+      <div class="card">
+        <div class="card-header" id="headingFour">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              Abstract
+            </button>
+          </h2>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>
+              <label for="abstract">Abstract</label>
+              <textarea id="abstract" name="abstract" formControlName="abstract" class="form-control"></textarea>
+            </p>
+
+            <p>
+              <label for="indexTerms">Index Terms</label>
+              <input type="text" id="indexTerms" name="college" formControlName="indexTerms" class="form-control">
+            </p>
+          </div>
+        </div>
+      </div>
+
     </div>
     <br/>
     <button (click)="submit()" type="submit" class="btn btn-success">Submit</button>
