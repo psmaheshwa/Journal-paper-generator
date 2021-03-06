@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "server": "cd nodepdf && npm start",
+    "server": "cd api && npm start",
     "startALl": "concurrently \"npm run server\" \"ng serve\"",
     "build": "ng build",
     "test": "ng test",
@@ -23,6 +23,7 @@
     "@angular/router": "~11.2.1",
     "bootstrap": "^4.6.0",
     "concurrently": "^6.0.0",
+    "file-saver": "^2.0.5",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",

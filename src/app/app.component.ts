@@ -46,7 +46,9 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
   }
 
-  download() {}
+  download() {
+    this.apiService.getApiData();
+  }
 
 
   submit(){
