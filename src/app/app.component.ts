@@ -21,8 +21,29 @@ export class AppComponent implements OnInit{
       college:'',
       location:'',
       abstract:'',
-      indexTerms:''
+      indexTerms:'',
+      sections: this.fb.array([])
     });
+  }
+
+  sections() : FormArray {
+    return this.formGroup.get("sections") as FormArray
+  }
+
+  newSection(): FormGroup {
+    return this.fb.group({
+      sectionTitle: '',
+      sectionContent: ''
+    })
+  }
+
+  addSections() {
+    this.sections().push(this.newSection());
+  }
+
+
+  removeSection(i:number) {
+    this.sections().removeAt(i);
   }
 
   names() : FormArray {
@@ -45,7 +66,6 @@ export class AppComponent implements OnInit{
   }
 
   onSubmit() {
-    console.log(this.formGroup.value);
   }
 
   ngOnInit(): void {
@@ -57,9 +77,19 @@ export class AppComponent implements OnInit{
 
 
   submit(){
-    console.log(this.formGroup.value)
     this.apiService.postApiData(this.formGroup.value).subscribe(
       (res) => {
+        this.formGroup = this.fb.group({
+          title: '',
+          names: this.fb.array([]) ,
+          department:'',
+          college:'',
+          location:'',
+          abstract:'',
+          indexTerms:'',
+          sections: this.fb.array([])
+        });
+        console.log("Submitted")
       }, (error) => {
         console.log(error);
       });
