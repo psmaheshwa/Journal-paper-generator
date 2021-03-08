@@ -68,7 +68,8 @@ function makePDF(data){
 
 
 exports.downloadPDF = (req,res)=>{
-  res.download(join(__dirname,'generatorController.js'),'sdf.txt');
+  console.log('jhsdbhsd');
+  res.sendFile(join(__dirname,'output.pdf'),'output.pdf');
 }
 
 exports.generatePDF = (req, res)=>{

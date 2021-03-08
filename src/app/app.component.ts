@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'
 import {ApiService} from './service/api.service';
+import {saveAs} from 'file-saver';
+
 
 @Component({
   selector: 'app-root',
@@ -72,7 +74,10 @@ export class AppComponent implements OnInit{
   }
 
   download() {
-    this.apiService.getApiData();
+    console.log('lsdbhd');
+    this.apiService.getApiData().subscribe(
+      data => saveAs(data, 'output.pdf'),
+      error => console.error(error));
   }
 
 
