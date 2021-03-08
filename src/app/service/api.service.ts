@@ -14,13 +14,10 @@ export class ApiService {
 
   getApiData(){
     let url = `${this.baseUri}/`;
-    this.http
-      .get(url, { responseType: "blob" })
-      .toPromise()
-      .then(blob => {
-        saveAs(blob, "dump.gz");
-      })
-      .catch(err => console.error("download error = ", err))
+    return this.http.get(url,{
+      responseType : 'blob',
+      headers:new HttpHeaders().append('Content-Type','application/json')
+    }).pipe(catchError(this.errorMgmt));
   }
 
   postApiData(data): Observable<any> {

@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +17,8 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxExtendedPdfViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
