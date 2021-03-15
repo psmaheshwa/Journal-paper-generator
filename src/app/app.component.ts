@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'
 import {ApiService} from './service/api.service';
 import {saveAs} from 'file-saver';
+import {pdfBase64} from './pdfBase64';
 
 
 @Component({
@@ -11,7 +12,7 @@ import {saveAs} from 'file-saver';
 })
 export class AppComponent implements OnInit{
   name = 'IEEE Paper Formater';
-
+  base64=pdfBase64;
   formGroup: FormGroup;
 
   constructor(private fb:FormBuilder, private apiService: ApiService) {
@@ -76,14 +77,8 @@ export class AppComponent implements OnInit{
   download() {
     console.log('lsdbhd');
     this.apiService.getApiData().subscribe(
-      data => saveAs(data, 'output.pdf'),
-      error => console.error(error));
-  }
-
-
-  submit(){
-    this.apiService.postApiData(this.formGroup.value).subscribe(
-      (res) => {
+      data => {
+        saveAs(data, 'output.pdf');
         this.formGroup = this.fb.group({
           title: '',
           names: this.fb.array([]) ,
@@ -94,6 +89,17 @@ export class AppComponent implements OnInit{
           indexTerms:'',
           sections: this.fb.array([])
         });
+      },
+      error => console.error(error));
+  }
+
+
+
+  submit(){
+    this.apiService.postApiData(this.formGroup.value).subscribe(
+      (data) => {
+        console.log(data);
+          this.base64 = data;
         console.log("Submitted")
       }, (error) => {
         console.log(error);

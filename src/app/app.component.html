@@ -2,157 +2,175 @@
   <div class="row">
     <div class="col-8">
       <h1>IEEE Paper Formater</h1>
-        <form  [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-          <div class="pre-scrollable" style="position: relative">
-            <div class="accordion" id="accordionExample">
-              <div class="card">
-                <div class="card-header" id="headingOne">
-                  <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Title
-                    </button>
-                  </h2>
-                </div>
-
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                  <div class="card-body">
-                    <p>
-                      <label for="articleTitle">Title Name:</label>
-                      <input type="text" id="articleTitle" name="title" formControlName="title" class="form-control">
-                    </p>        </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" id="headingTwo">
-                  <h2 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      Author Name
-                    </button>
-                  </h2>
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                  <div class="card-body">
-                    <table class="table table-bordered" formArrayName="names">
-                      <tr>
-                        <th colspan="2">Add Multiple Names:</th>
-                        <th width="150px"><button type="button" (click)="addName()" class="btn btn-primary">Add More</button></th>
-                      </tr>
-                      <tr *ngFor="let name of names().controls; let i=index" [formGroupName]="i">
-                        <td>
-                          Firstname :
-                          <input type="text" formControlName="firstname" class="form-control">
-                        </td>
-                        <td>
-                          Lastname:
-                          <input type="text" formControlName="lastname" class="form-control">
-                        </td>
-                        <td>
-                          <button (click)="removeName(i)" class="btn btn-danger">Remove</button>
-                        </td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" id="headingThree">
-                  <h2 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      Department and University
-                    </button>
-                  </h2>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                  <div class="card-body">
-                    <p>
-                      <label for="department">Department</label>
-                      <input type="text" id="department" name="department" formControlName="department" class="form-control">
-                    </p>
-
-                    <p>
-                      <label for="college">College</label>
-                      <input type="text" id="college" name="college" formControlName="college" class="form-control">
-                    </p>
-                    <p>
-                      <label for="location">Location</label>
-                      <input type="text" id="location" name="location" formControlName="location" class="form-control">
-                    </p>        </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" id="headingFour">
-                  <h2 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                      Abstract
-                    </button>
-                  </h2>
-                </div>
-                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                  <div class="card-body">
-                    <p>
-                      <label for="abstract">Abstract</label>
-                      <textarea id="abstract" name="abstract" formControlName="abstract" class="form-control"></textarea>
-                    </p>
-
-                    <p>
-                      <label for="indexTerms">Index Terms</label>
-                      <input type="text" id="indexTerms" name="indexTerms" formControlName="indexTerms" class="form-control">
-                    </p>
-                  </div>
-                </div>
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <div class="pre-scrollable" style="position: relative">
+          <div class="accordion" id="accordionExample">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                          aria-expanded="true" aria-controls="collapseOne">
+                    Title
+                  </button>
+                </h2>
               </div>
 
-              <div class="card">
-                <div class="card-header" id="headingFive">
-                  <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-                      Sections
-                    </button>
-                  </h2>
-                </div>
-
-                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                  <div class="card-body">
-                    <table class="table table-bordered" formArrayName="sections">
-                      <tr>
-                        <th colspan="2">Add Multiple Sections:</th>
-                        <th width="150px"><button type="button" (click)="addSections()" class="btn btn-primary">Add More</button></th>
-                      </tr>
-                      <tr *ngFor="let section of sections().controls; let i=index" [formGroupName]="i">
-                        <td colspan="2">
-                          <p>
-                            <label for="sectionTitle">Section Title</label>
-                            <input type="text" id="sectionTitle" name="sectionTitle" formControlName="sectionTitle" class="form-control">
-                          </p>
-                          <p>
-                            <label for="sectionContent">Content</label>
-                            <textarea id="sectionContent" name="sectionContent" formControlName="sectionContent" class="form-control"></textarea>
-                          </p>
-                        </td>
-
-                        <td>
-                          <button (click)="removeSection(i)" class="btn btn-danger">Remove</button>
-                        </td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                  <p>
+                    <label for="articleTitle">Title Name:</label>
+                    <input type="text" id="articleTitle" name="title" formControlName="title" class="form-control"
+                           placeholder="ex:- Covid Detection using Machine Learning..">
+                  </p></div>
               </div>
-
             </div>
-          </div>
-          <br/>
-          <button (click)="submit()" type="submit" class="btn btn-primary">Submit</button>
-          <button (click)="download()" id="download" type="submit" class="flex-row btn btn-success">Download</button>
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                          aria-expanded="false" aria-controls="collapseTwo">
+                    Author Name
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                  <table class="table table-bordered" formArrayName="names">
+                    <tr>
+                      <th colspan="2">Add Multiple Names:</th>
+                      <th width="150px">
+                        <button type="button" (click)="addName()" class="btn btn-primary">Add More</button>
+                      </th>
+                    </tr>
+                    <tr *ngFor="let name of names().controls; let i=index" [formGroupName]="i">
+                      <td>
+                        Firstname :
+                        <input type="text" formControlName="firstname" class="form-control">
+                      </td>
+                      <td>
+                        Lastname:
+                        <input type="text" formControlName="lastname" class="form-control">
+                      </td>
+                      <td>
+                        <button (click)="removeName(i)" class="btn btn-danger">Remove</button>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                          data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Department and University
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                  <p>
+                    <label for="department">Department</label>
+                    <input type="text" id="department" name="department" formControlName="department"
+                           class="form-control">
+                  </p>
 
-        </form>
+                  <p>
+                    <label for="college">College</label>
+                    <input type="text" id="college" name="college" formControlName="college" class="form-control">
+                  </p>
+                  <p>
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" formControlName="location" class="form-control" placeholder="City, State-Pincode, Country">
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingFour">
+                <h2 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                          data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Abstract
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                <div class="card-body">
+                  <p>
+                    <label for="abstract">Abstract</label>
+                    <textarea id="abstract" name="abstract" formControlName="abstract" class="form-control"></textarea>
+                  </p>
+
+                  <p>
+                    <label for="indexTerms">Index Terms</label>
+                    <input type="text" id="indexTerms" name="indexTerms" formControlName="indexTerms"
+                           class="form-control">
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header" id="headingFive">
+                <h2 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFive"
+                          aria-expanded="true" aria-controls="collapseFive">
+                    Sections
+                  </button>
+                </h2>
+              </div>
+
+              <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                <div class="card-body">
+                  <table class="table table-bordered" formArrayName="sections">
+                    <tr>
+                      <th colspan="2">Add Multiple Sections:</th>
+                      <th width="150px">
+                        <button type="button" (click)="addSections()" class="btn btn-primary">Add More</button>
+                      </th>
+                    </tr>
+                    <tr *ngFor="let section of sections().controls; let i=index" [formGroupName]="i">
+                      <td colspan="2">
+                        <p>
+                          <label for="sectionTitle">Section Title</label>
+                          <input type="text" id="sectionTitle" name="sectionTitle" formControlName="sectionTitle"
+                                 class="form-control">
+                        </p>
+                        <p>
+                          <label for="sectionContent">Content</label>
+                          <textarea id="sectionContent" name="sectionContent" formControlName="sectionContent"
+                                    class="form-control"></textarea>
+                        </p>
+                      </td>
+
+                      <td>
+                        <button (click)="removeSection(i)" class="btn btn-danger">Remove</button>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <br/>
+        <button (click)="submit()" type="submit" class="btn btn-primary">Submit</button>
+        <button (click)="download()" id="download" type="submit" class="flex-row btn btn-success">Download</button>
+
+      </form>
       <br>
     </div>
     <div class="col-4">
       <h1>Preview</h1>
-      <ngx-extended-pdf-viewer [src]="'assets/output.pdf'" useBrowserLocale="true" style="position: relative" height="520px"></ngx-extended-pdf-viewer>
+            <ngx-extended-pdf-viewer [base64Src]="base64"  useBrowserLocale="true" [textLayer]="true"
+                                     style="position: relative" height="520px">
+
+            </ngx-extended-pdf-viewer>
     </div>
   </div>
 
-<!--  {{this.formGroup.value | json}}-->
+  <!--  {{this.formGroup.value | json}}-->
 </div>
