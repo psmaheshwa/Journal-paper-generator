@@ -1,4 +1,4 @@
-const {createReadStream, createWriteStream, readFile} = require('fs');
+const {readFileSync, createWriteStream, readFile} = require('fs');
 const {join, resolve} = require('path');
 const latex = require('node-latex');
 const pdf2base64 = require('pdf-to-base64');
@@ -26,17 +26,23 @@ exports.generatePDF = (req, res) => {
   makePDF(req.body);
   console.log(req.body);
 
-  pdf2base64(join(__dirname, 'output.pdf')).then((response) => {
-    console.log(response);
-    res.status(200).json({
-      status: "success",
-      data: response,
-      message: "Congrats! "
-    });
-  }).catch(
-    (error) => {
-      console.log(error);
-    });
+  // pdf2base64(join(__dirname, 'output.pdf')).then((response) => {
+  //   console.log("Response :"+response);
+  //   res.status(200).json({
+  //     status: "success",
+  //     data: response,
+  //     message: "Congrats! "
+  //   });
+  // }).catch(
+  //   (error) => {
+  //     console.log(error);
+  //   });
+  var binaryData = readFileSync('/home/mahesh/Desktop/frontend/api/controller/Template-selection.js');
+  console.log(binaryData.toString());
+  res.status(200).json({
+    data: new Buffer(binaryData).toString("base64")
+  })
+
 }
 
 

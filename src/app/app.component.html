@@ -1,8 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-8">
+    <div class="col-6">
       <h1>IEEE Paper Formater</h1>
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <div class="form-group col-md-4">
+          <label for="inputState">Journal Type</label>
+          <select id="inputState" formControlName="choice" class="form-control">
+            <option *ngFor="let choice of choices" [value]="choice">{{choice}}</option>
+          </select>
+        </div>
         <div class="pre-scrollable" style="position: relative">
           <div class="accordion" id="accordionExample">
             <div class="card">
@@ -163,14 +169,15 @@
       </form>
       <br>
     </div>
-    <div class="col-4">
+    <div class="col-6">
       <h1>Preview</h1>
             <ngx-extended-pdf-viewer [base64Src]="base64"  useBrowserLocale="true" [textLayer]="true"
-                                     style="position: relative" height="520px">
+                                     style="position: relative" height="520px" download="false">
 
             </ngx-extended-pdf-viewer>
+<!--      <pdf-viewer [src]="pdfSrc"-->
+<!--                  [render-text]="true" [stick-to-page]="true" [zoom-scale]="'page-width'" [zoom]=".7"-->
+<!--      ></pdf-viewer>-->
     </div>
   </div>
-
-  <!--  {{this.formGroup.value | json}}-->
 </div>

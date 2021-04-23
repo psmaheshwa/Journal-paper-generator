@@ -11,13 +11,15 @@ import {pdfBase64} from './pdfBase64';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent implements OnInit{
-  name = 'IEEE Paper Formater';
+  name = 'Journal Paper Formatter';
   base64=pdfBase64;
   formGroup: FormGroup;
+  choices:string[] = ['IEEE', 'IET'];
+  pdfSrc = "https://github.com/psmaheshwa/Journal-paper-generator/blob/main/output.pdf"
 
   constructor(private fb:FormBuilder, private apiService: ApiService) {
-
     this.formGroup = this.fb.group({
+      choice: '',
       title: '',
       names: this.fb.array([]) ,
       department:'',
@@ -80,6 +82,7 @@ export class AppComponent implements OnInit{
       data => {
         saveAs(data, 'output.pdf');
         this.formGroup = this.fb.group({
+          choice: '',
           title: '',
           names: this.fb.array([]) ,
           department:'',
@@ -98,8 +101,8 @@ export class AppComponent implements OnInit{
   submit(){
     this.apiService.postApiData(this.formGroup.value).subscribe(
       (data) => {
-        console.log(data);
-          this.base64 = data;
+        console.log("Post Api : ",data);
+          this.pdfSrc = data['data'];
         console.log("Submitted")
       }, (error) => {
         console.log(error);

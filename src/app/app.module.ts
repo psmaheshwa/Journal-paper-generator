@@ -6,6 +6,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxExtendedPdfViewerModule
+    NgxExtendedPdfViewerModule,
+    PdfViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

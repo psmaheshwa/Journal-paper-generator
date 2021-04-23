@@ -4,3 +4,12 @@
 .pre-scrollable{
   max-height: 640px;
 }
+pdf-viewer {
+  display: block;
+  height: 100vh;
+  width: 100vh;
+}
+
+.container{
+  width: auto;
+}
